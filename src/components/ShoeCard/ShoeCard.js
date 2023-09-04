@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
+import styled, { keyframes } from "styled-components/macro";
 
 import { WEIGHTS } from "../../constants";
 import { formatPrice, pluralize, isNewShoe } from "../../utils";
@@ -27,7 +27,9 @@ const ShoeCard = ({ slug, name, imageSrc, price, salePrice, releaseDate, numOfCo
 		<Link href={`/shoe/${slug}`}>
 			<Wrapper>
 				<ImageWrapper>
-					<Image alt="" src={imageSrc} />
+					<ImageHoverWrapper>
+						<Image alt="" src={imageSrc} />
+					</ImageHoverWrapper>
 					{variant === "on-sale" && <SaleFlag>Sale</SaleFlag>}
 					{variant === "new-release" && <NewFlag>Just released!</NewFlag>}
 				</ImageWrapper>
@@ -54,6 +56,15 @@ const ShoeCard = ({ slug, name, imageSrc, price, salePrice, releaseDate, numOfCo
 	);
 };
 
+const flip = keyframes`
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(360deg);
+  }
+`;
+
 const Link = styled.a`
 	text-decoration: none;
 	color: inherit;
@@ -61,12 +72,16 @@ const Link = styled.a`
 
 const Wrapper = styled.article``;
 
-const ImageWrapper = styled.div`
-	position: relative;
+const Image = styled.img`
+	display: block;
+	width: 100%;
+	transform-origin: center 70%;
+	will-change: transform;
+	transition: transform 500ms ease-out;
 `;
 
-const Image = styled.img`
-	width: 100%;
+const ImageHoverWrapper = styled.div`
+	overflow: hidden;
 	border-radius: 16px 16px 4px 4px;
 `;
 
@@ -114,6 +129,23 @@ const SaleFlag = styled(Flag)`
 `;
 const NewFlag = styled(Flag)`
 	background-color: var(--color-secondary);
+`;
+
+const ImageWrapper = styled.div`
+	position: relative;
+
+	&:hover {
+		${Image} {
+			transform: scale(1.1);
+			transition: transform 200ms ease;
+		}
+
+		@media (prefers-reduced-motion: no-preference) {
+			${Flag} {
+				animation: ${flip} 500ms ease-in-out;
+			}
+		}
+	}
 `;
 
 export default ShoeCard;
