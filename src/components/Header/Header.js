@@ -12,6 +12,14 @@ import VisuallyHidden from "../VisuallyHidden";
 const Header = () => {
 	const [showMobileMenu, setShowMobileMenu] = React.useState(false);
 
+	const NavUnderline = () => (
+		<DottedUnderline>
+			<Dot />
+			<Dot />
+			<Dot />
+		</DottedUnderline>
+	);
+
 	return (
 		<header>
 			<SuperHeader />
@@ -25,66 +33,42 @@ const Header = () => {
 							<NavText>Sale</NavText>
 							<BoldNavText aria-hidden>Sale</BoldNavText>
 						</NavTextWrapper>
-						<DottedUnderline>
-							<Dot />
-							<Dot />
-							<Dot />
-						</DottedUnderline>
+						<NavUnderline />
 					</NavLink>
 					<NavLink href="/new">
 						<NavTextWrapper>
 							<NavText>New&nbsp;Releases</NavText>
 							<BoldNavText aria-hidden>New&nbsp;Releases</BoldNavText>
 						</NavTextWrapper>
-						<DottedUnderline>
-							<Dot />
-							<Dot />
-							<Dot />
-						</DottedUnderline>
+						<NavUnderline />
 					</NavLink>
 					<NavLink href="/men">
 						<NavTextWrapper>
 							<NavText>Men</NavText>
 							<BoldNavText aria-hidden>Men</BoldNavText>
 						</NavTextWrapper>
-						<DottedUnderline>
-							<Dot />
-							<Dot />
-							<Dot />
-						</DottedUnderline>
+						<NavUnderline />
 					</NavLink>
 					<NavLink href="/women">
 						<NavTextWrapper>
 							<NavText>Women</NavText>
 							<BoldNavText aria-hidden>Women</BoldNavText>
 						</NavTextWrapper>
-						<DottedUnderline>
-							<Dot />
-							<Dot />
-							<Dot />
-						</DottedUnderline>
+						<NavUnderline />
 					</NavLink>
 					<NavLink href="/kids">
 						<NavTextWrapper>
 							<NavText>Kids</NavText>
 							<BoldNavText aria-hidden>Kids</BoldNavText>
 						</NavTextWrapper>
-						<DottedUnderline>
-							<Dot />
-							<Dot />
-							<Dot />
-						</DottedUnderline>
+						<NavUnderline />
 					</NavLink>
 					<NavLink href="/collections">
 						<NavTextWrapper>
 							<NavText>Collections</NavText>
 							<BoldNavText aria-hidden>Collections</BoldNavText>
 						</NavTextWrapper>
-						<DottedUnderline>
-							<Dot />
-							<Dot />
-							<Dot />
-						</DottedUnderline>
+						<NavUnderline />
 					</NavLink>
 				</DesktopNav>
 				<MobileActions>
