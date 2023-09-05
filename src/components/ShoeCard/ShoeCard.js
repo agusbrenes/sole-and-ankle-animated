@@ -84,9 +84,11 @@ const Image = styled.img`
 	will-change: transform;
 	transition: transform 500ms ease-out;
 
-	${Link}:hover &, ${Link}:focus & {
-		transform: scale(1.1);
-		transition: transform 200ms ease;
+	@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+		${Link}:hover &, ${Link}:focus & {
+			transform: scale(1.1);
+			transition: transform 200ms ease;
+		}
 	}
 `;
 
@@ -128,7 +130,7 @@ const Flag = styled.div`
 	color: var(--color-white);
 	border-radius: 2px;
 
-	@media (prefers-reduced-motion: no-preference) {
+	@media (hover: hover) and (prefers-reduced-motion: no-preference) {
 		${Link}:hover &, ${Link}:focus & {
 			animation: ${flip} 500ms ease-in-out;
 		}
