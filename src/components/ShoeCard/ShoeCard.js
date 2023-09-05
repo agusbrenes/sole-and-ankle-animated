@@ -27,12 +27,10 @@ const ShoeCard = ({ slug, name, imageSrc, price, salePrice, releaseDate, numOfCo
 		<Link href={`/shoe/${slug}`}>
 			<Wrapper>
 				<ImageWrapper>
-					<ImageHoverWrapper>
-						<Image alt="" src={imageSrc} />
-					</ImageHoverWrapper>
-					{variant === "on-sale" && <SaleFlag>Sale</SaleFlag>}
-					{variant === "new-release" && <NewFlag>Just released!</NewFlag>}
+					<Image alt="" src={imageSrc} />
 				</ImageWrapper>
+				{variant === "on-sale" && <SaleFlag>Sale</SaleFlag>}
+				{variant === "new-release" && <NewFlag>Just released!</NewFlag>}
 				<Spacer size={12} />
 				<Row>
 					<Name>{name}</Name>
@@ -70,10 +68,13 @@ const Link = styled.a`
 	color: inherit;
 `;
 
-const Wrapper = styled.article``;
+const Wrapper = styled.article`
+	position: relative;
+`;
 
 const ImageWrapper = styled.div`
-	position: relative;
+	overflow: hidden;
+	border-radius: 16px 16px 4px 4px;
 `;
 
 const Image = styled.img`
@@ -87,11 +88,6 @@ const Image = styled.img`
 		transform: scale(1.1);
 		transition: transform 200ms ease;
 	}
-`;
-
-const ImageHoverWrapper = styled.div`
-	overflow: hidden;
-	border-radius: 16px 16px 4px 4px;
 `;
 
 const Row = styled.div`
